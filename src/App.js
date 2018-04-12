@@ -13,7 +13,7 @@ class App extends Component {
     loses: 0
   };
 
-  handleIncrement = () => {
+  click = () => {
     this.setState({ click: this.state.click + 1 });
   };
 
@@ -25,24 +25,25 @@ class App extends Component {
     this.setState({ loses: this.state.loses + 1 });
   };
 
+  
   render() {
+    
     return (
       <Wrapper>
         <Title>Don't Click the Same Pic Twice</Title>
 
         <div className="line">
-          Wins: {this.state.wins}
+          Wins: <u>{this.state.wins}</u>
           <span className="room"></span>
-          Loses: {this.state.loses}
+          Loses: <u>{this.state.loses}</u>
         </div>
 
         <div className="line">
-          Correct Guesses in a Row: {this.state.click}
+          Correct Guesses in a Row: <u>{this.state.click}</u>
         </div>
 
         {this.state.friends.map(friend => (
-          <FriendCard
-            removeFriend={this.removeFriend}
+          <FriendCard 
             id={friend.id}
             key={friend.id}
             image={friend.image}
