@@ -6,23 +6,40 @@ import friends from "./friends.json";
 import "./App.css";
 
 class App extends Component {
-  // Setting this.state.friends to the friends json array
   state = {
-    friends
+    friends,
+    click: 0,
+    wins: 0,
+    loses: 0
   };
 
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
+  handleIncrement = () => {
+    this.setState({ click: this.state.click + 1 });
   };
 
-  // Map over this.state.friends and render a FriendCard component for each friend object
+  wins = () => {
+    this.setState({ wins: this.state.wins + 1 });
+  };
+
+  loses = () => {
+    this.setState({ loses: this.state.loses + 1 });
+  };
+
   render() {
     return (
       <Wrapper>
         <Title>Don't Click the Same Pic Twice</Title>
+
+        <div className="line">
+          Wins: {this.state.wins}
+          <span className="room"></span>
+          Loses: {this.state.loses}
+        </div>
+
+        <div className="line">
+          Correct Guesses in a Row: {this.state.click}
+        </div>
+
         {this.state.friends.map(friend => (
           <FriendCard
             removeFriend={this.removeFriend}
