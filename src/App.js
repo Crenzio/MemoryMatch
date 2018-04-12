@@ -13,21 +13,21 @@ class App extends Component {
     loses: 0
   };
 
-  click = () => {
+  handleclick = () => {
     this.setState({ click: this.state.click + 1 });
   };
 
-  wins = () => {
+  handlewins = () => {
     this.setState({ wins: this.state.wins + 1 });
   };
 
-  loses = () => {
+  handleloses = () => {
     this.setState({ loses: this.state.loses + 1 });
   };
 
-  
+
   render() {
-    
+
     return (
       <Wrapper>
         <Title>Don't Click the Same Pic Twice</Title>
@@ -43,12 +43,13 @@ class App extends Component {
         </div>
 
         {this.state.friends.map(friend => (
-          <FriendCard 
+          <FriendCard
             id={friend.id}
             key={friend.id}
             image={friend.image}
           />
         ))}
+        <span >Test</span>
       </Wrapper>
     );
   }
